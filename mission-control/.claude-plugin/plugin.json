@@ -1,0 +1,38 @@
+{
+  "name": "mission-control",
+  "version": "0.2.0",
+  "description": "Live strip above the prompt: alerts, plan, board, macros, usage and this session's PRs",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "baseBranch": {
+      "type": "string",
+      "title": "Base branch",
+      "description": "Branch your PRs target; 'behind' and base CI are measured against it",
+      "default": "development"
+    },
+    "ciWorkflow": {
+      "type": "string",
+      "title": "CI workflow name",
+      "description": "GitHub Actions workflow whose result counts as CI on the base branch",
+      "default": "CI"
+    },
+    "pollSeconds": {
+      "type": "number",
+      "title": "GitHub poll interval (seconds)",
+      "description": "How often PRs, base CI and the board are checked",
+      "default": 60
+    },
+    "quietMinutes": {
+      "type": "number",
+      "title": "Quiet agent threshold (minutes)",
+      "description": "A running agent with no tool calls for this long raises an alert",
+      "default": 8
+    },
+    "macros": {
+      "type": "string",
+      "title": "Macros (JSON)",
+      "description": "Optional list of {key,label,prompt,skills[]}; empty uses the built-in seven",
+      "default": ""
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "mission-control",
+  "owner": { "name": "rkadiwal" },
+  "plugins": [
+    {
+      "name": "mission-control",
+      "source": "./mission-control",
+      "description": "Live strip above the prompt: alerts, plan, board, macros, usage and this session's PRs"
+    }
+  ]
+}
