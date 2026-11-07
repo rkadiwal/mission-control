@@ -7,15 +7,15 @@ const NOW = Date.parse('2026-10-06T05:00:00Z')
 const base: AlertInput = { now: NOW, role: 'session', base: 'development', quietMinutes: 8, peers: [], repos: [], prs: [], quietAgents: [], usage: [] }
 
 const board: Board = {
-  repo: 'appointmental_backend', num: 1238, url: 'https://github.com/o/be/issues/1238', title: 'Board', columns: ['Worker', 'Module'], fetchedAt: NOW,
+  repo: 'web_backend', num: 1238, url: 'https://github.com/o/be/issues/1238', title: 'Board', columns: ['Worker', 'Module'], fetchedAt: NOW,
   lanes: [
     { worker: 'W1', cells: ['W1', 'platform'], status: 'not-ready', statusText: 'Not gate-ready', lastPostAt: NOW - 41 * 60_000 },
-    { worker: 'W3', cells: ['W3', 'chiro'], status: 'blocked', statusText: 'Blocked', question: 'Can it go internal?', lastPostAt: NOW - 8 * 60_000 },
-    { worker: 'W4', cells: ['W4', 'engagement'], status: 'pr', statusText: 'PR open', pr: { num: 1253, ci: 'fail', url: 'https://x/1253/files', isMerged: false } },
+    { worker: 'W3', cells: ['W3', 'billing'], status: 'blocked', statusText: 'Blocked', question: 'Can it go internal?', lastPostAt: NOW - 8 * 60_000 },
+    { worker: 'W4', cells: ['W4', 'reports'], status: 'pr', statusText: 'PR open', pr: { num: 1253, ci: 'fail', url: 'https://x/1253/files', isMerged: false } },
   ],
 }
 
-const pr = (over: Partial<SessionPr>): SessionPr => ({ repo: 'appointmental_frontend', tag: 'fe', num: 794, title: 'seed', url: 'u', state: 'OPEN', ci: 'pass', base: 'development', behind: 0, createdAt: NOW, ...over })
+const pr = (over: Partial<SessionPr>): SessionPr => ({ repo: 'web_frontend', tag: 'fe', num: 794, title: 'seed', url: 'u', state: 'OPEN', ci: 'pass', base: 'development', behind: 0, createdAt: NOW, ...over })
 
 describe('alerts', () => {
   test('orchestrator sees blocked, not-ready and red lanes', () => {

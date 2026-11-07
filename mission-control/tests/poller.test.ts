@@ -18,7 +18,7 @@ function fakePorts(answer: (cmd: string) => Reply) {
     },
     now: async () => (clock += 20_000),
     sessionId: async () => 's1',
-    cwd: '/r/appointmental_frontend',
+    cwd: '/r/web_frontend',
     home: '',
     read: async () => '',
     write: async () => undefined,
@@ -41,7 +41,7 @@ const settle = async () => {
 const config = { base: 'development', ciWorkflow: 'CI', pollMs: 60_000, quietMinutes: 8 }
 const OPEN = JSON.stringify({ title: 'seed', state: 'OPEN', url: 'https://github.com/o/fe/pull/794', headRefName: 'f', baseRefName: 'development', statusCheckRollup: [] })
 const MERGED = OPEN.replace('"OPEN"', '"MERGED"')
-const topLevel = (cmd: string): Reply | undefined => (cmd.startsWith('git rev-parse --show-toplevel') ? { exitCode: 0, stdout: '/r/appointmental_frontend\n' } : undefined)
+const topLevel = (cmd: string): Reply | undefined => (cmd.startsWith('git rev-parse --show-toplevel') ? { exitCode: 0, stdout: '/r/web_frontend\n' } : undefined)
 
 describe('poller', () => {
   test('keeps a tracked PR when GitHub is unreachable, drops it once merged', async () => {
@@ -49,7 +49,7 @@ describe('poller', () => {
     const fake = fakePorts(cmd => topLevel(cmd) ?? (cmd.startsWith('gh pr view') ? pr : { exitCode: 1, stdout: '' }))
     const poller = createPoller(fake.ports, config)
     await poller.start()
-    await poller.trackPr('/r/appointmental_frontend', 794, 'https://github.com/o/fe/pull/794')
+    await poller.trackPr('/r/web_frontend', 794, 'https://github.com/o/fe/pull/794')
     await settle()
     expect(fake.views.at(-1)?.prs.map(p => p.num)).toEqual([794])
     pr = { exitCode: 1, stdout: '' }

@@ -5,14 +5,14 @@ import type { UiState, View } from '../types'
 const NOW = Date.parse('2026-10-06T05:00:00Z')
 const VIEW: View = {
   at: NOW,
-  scope: { label: 'appointmental · be + fe', repos: ['/r/be', '/r/fe'] },
+  scope: { label: 'web · be + fe', repos: ['/r/be', '/r/fe'] },
   role: 'session',
   plan: [
     { id: '1', text: 'Audit e2e specs', status: 'done' },
     { id: '2', text: 'Run organization e2e', activeText: 'Running organization e2e', status: 'now' },
     { id: '3', text: 'Self review then merge', status: 'todo', isMine: true },
   ],
-  prs: [{ repo: 'appointmental_frontend', tag: 'fe', num: 794, title: 'seed 12 patients', url: 'https://x/794/files', state: 'OPEN', ci: 'pending', base: 'development', behind: 0, createdAt: NOW - 6 * 60_000 }],
+  prs: [{ repo: 'web_frontend', tag: 'fe', num: 794, title: 'seed demo data', url: 'https://x/794/files', state: 'OPEN', ci: 'pending', base: 'development', behind: 0, createdAt: NOW - 6 * 60_000 }],
   usage: [{ kind: 'time', pct: 62 }, { kind: 'week', pct: 38 }, { kind: 'context', pct: 46 }],
   peers: [],
   repos: [{ tag: 'be', path: '/r/be', baseCi: 'fail' }],
